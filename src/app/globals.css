@@ -5,11 +5,51 @@
   --foreground: #171717;
 }
 
+/* Scrollbar sottile e discreta */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Cards */
+  --height-cards: 400px;
+  --width-cards: 300px;
+  --border-cards-purple: rgb(114, 0, 172);
+  --flex-r-cards: row;
+  --padding-cards: 10px;
+
+  /* Sub Cards */
+  --height-sub: 100%;
+  --width-sub: 100%;
+  --gap-sub: 5px;
+  --border-sub-purple: rgb(114, 0, 172);
+
+  /* Other */
+  --gradient-card: linear-gradient(
+    135deg,
+    #5016b5 15%,
+    white 90%
+  );
+
+  --_force-rebuild: 3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +63,28 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@utility cards {
+  @apply relative flex flex-row border border-(--border-cards-purple) h-cards w-cards rounded-2xl p-(--padding-cards) items-center justify-center;
+}
+
+@utility subCard {
+  @apply relative flex flex-col border border-(--border-sub-purple) h-sub w-sub gap-sub rounded-2xl p-2;
+}
+
+@utility titleCard {
+  @apply relative flex flex-row items-center justify-center text-base
+  border border-amber-200 rounded-2xl h-1/4 w-full;
+}
+
+
+@utility bodyCard {
+  @apply relative flex flex-wrap h-2/4 w-full overflow-y-auto overflow-x-hidden
+  border border-amber-200 rounded-2xl p-0.5 text-center text-base;
+}
+
+@utility footerCard {
+  @apply relative flex flex-wrap h-1/4 w-full overflow-y-auto overflow-x-hidden
+  border border-amber-200 rounded-2xl p-0.5 text-center text-base;
 }

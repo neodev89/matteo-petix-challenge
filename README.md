@@ -41,3 +41,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Link API
 
 <https://jsonplaceholder.typicode.com/posts>
+
+## Source
+
+Next.js: <https://nextjs.org/>;
+Tailwind: <https://tailwindcss.com/>;
+Tanstack Query: <https://tanstack.com/query/latest>;
+React Hook Form: <https://react-hook-form.com/>;
+Zod: <https://zod.dev/>;
+Material UI: <https://mui.com/>;

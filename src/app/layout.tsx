@@ -1,7 +1,7 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { WrapperQueryClientProvider } from "../tanstack/queryprovider";
+import { WrapperQueryClientProvider } from "../tanstack/queryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
