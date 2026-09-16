@@ -28,6 +28,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --border-card: rgba(255, 255, 255, 0.25);
 
   /* Cards */
   --height-cards: 400px;
@@ -41,6 +42,15 @@
   --width-sub: 100%;
   --gap-sub: 5px;
   --border-sub-purple: rgb(114, 0, 172);
+
+  /* Links & Buttons */
+  --height-btn: 50px;
+  --width-btn-sm: 96px;
+  --width-btn-lg: 126px;
+  --width-btn-xl: 180px;
+  --bg-btn: rgb(114, 0, 172);
+  --text-btn: white;
+  --bg-btn-hover: rgb(49, 0, 74);
 
   /* Other */
   --gradient-card: linear-gradient(
@@ -70,21 +80,34 @@ body {
 }
 
 @utility subCard {
-  @apply relative flex flex-col border border-(--border-sub-purple) h-sub w-sub gap-sub rounded-2xl p-2;
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl p-2;
 }
 
 @utility titleCard {
   @apply relative flex flex-row items-center justify-center text-base
-  border border-amber-200 rounded-2xl h-1/4 w-full;
+  border border-(--border-card) rounded-2xl h-1/4 w-full;
 }
 
-
 @utility bodyCard {
-  @apply relative flex flex-wrap h-2/4 w-full overflow-y-auto overflow-x-hidden
-  border border-amber-200 rounded-2xl p-0.5 text-center text-base;
+  @apply relative flex flex-wrap flex-row justify-center items-center
+  h-2/4 w-full border border-(--border-card) rounded-2xl p-2 ;
+}
+
+@utility subBodyCard {
+  @apply relative flex flex-wrap h-38 w-full text-center text-base overflow-y-auto overflow-x-hidden;
 }
 
 @utility footerCard {
-  @apply relative flex flex-wrap h-1/4 w-full overflow-y-auto overflow-x-hidden
-  border border-amber-200 rounded-2xl p-0.5 text-center text-base;
+  @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
+  border border-(--border-card) rounded-2xl p-2 text-center text-base;
+}
+
+@utility buttonCard {
+  @apply relative flex flex-row justify-center items-center
+  h-btn w-btn-lg bg-(--bg-btn) text-(--text-btn) rounded-2xl
+  hover:bg-(--bg-btn-hover) hover:scale-110;
+}
+
+@utility detailsCard {
+  @apply relative flex flex-row flex-1 h-full w-full items-center justify-center p-2;
 }
