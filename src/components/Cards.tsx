@@ -2,28 +2,50 @@
 
 import Link from "next/link";
 import { blogType } from "../zod/blogSchema"
+import { useBg } from "../hooks/useCtx";
+import { useState } from "react";
 
-interface CardsProps {
+export interface CardsProps {
     dataBlog: blogType;
     id: string;
     isDetails: boolean;
+    setLoadingLink: (loadingLink: boolean) => void;
 }
 
-export default function Cards({ dataBlog, id, isDetails }: CardsProps) {
-    console.log(dataBlog)
+export default function Cards({ dataBlog, id, isDetails, setLoadingLink }: CardsProps) {
+    console.log(dataBlog);
+    const { bg } = useBg();
+
+    const splittedWord = dataBlog.title.split("");
+    let uppercaseWord = "";
+    uppercaseWord = splittedWord[0].toUpperCase();
+    for (let i = 1; i < splittedWord.length; i++) {
+        uppercaseWord += splittedWord[i];
+    }
+    // console.log("UPPERCASE WORD:", uppercaseWord);
+
+    const splittedBody = dataBlog.body.split("");
+    let upBody = "";
+    upBody = splittedBody[0].toUpperCase();
+    for (let i = 1; i < splittedBody.length; i++) {
+        upBody += splittedBody[i];
+    }
+
     return (
-        <div className="cards">
+        <div className={bg === 'dark' ? "cardsD" : "cardsL"}>
             <div className="subCard">
-                <div className="titleCard">
-                    <p className="text-center">{dataBlog.title}</p>
+                <div className={bg === 'dark' ? "titleCardD" : "titleCardL"}>
+                    <h4 className="text-center text-base font-serif font-black">{uppercaseWord}</h4>
                 </div>
-                <div className="bodyCard">
+                <div className={bg === 'dark' ? "bodyCardD" : "bodyCardL"}>
                     <div className="subBodyCard">
-                        <p className="text-center">{dataBlog.body}</p>
+                        <p className={bg === 'dark' ? "text-center text-white text-base font-serif" : "text-center text-black text-lg font-serif"}>
+                            {upBody}
+                        </p>
                     </div>
                 </div>
-                <div className="footerCard">
-                    <Link href={isDetails ? `/${id}/blog` : "/"} className="buttonCard">
+                <div className={bg === 'dark' ? "footerCardD" : "footerCardL"}>
+                    <Link href={isDetails ? `/${id}/blog` : "/"} className="buttonCard" onClick={() => setLoadingLink(true)}>
                         {isDetails ? "Dettaglio" : "Indietro"}
                     </Link>
                 </div>

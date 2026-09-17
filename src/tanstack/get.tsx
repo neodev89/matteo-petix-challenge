@@ -51,7 +51,7 @@ export function useGetParsedZod<TSchema extends ZodType = ZodType>({
                 params: body ?? {}
             });
 
-            console.log("Che tipo di response ottengo? ", res);
+            // console.log("Che tipo di response ottengo? ", res);
             // 👈 3. Validazione con Zod: se viene fornito uno schema, eseguiamo il parsing
             if (schema) {
                 // Se ApiResponse ha una struttura tipo { success, message, data },

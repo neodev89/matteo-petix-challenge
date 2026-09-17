@@ -29,3 +29,7 @@ fine lavoro del giorno ore 21:00
 Creazione delle Cars che daranno vita al Blog e styling annesso.
 Fine mattinata ore 11:30
 • inizio pomeridiano ore 17:00: e terminato alle 21:05
+
+17/09
+• Inizio mattutino: ore 07:00 e fine ore 12:30
+• Inizio pomeridiano ore 17:00 e fine ore 20:30

@@ -1,11 +1,11 @@
 'use client'
 
-import Cards from "@/src/components/Cards";
+import DetailCard from "@/src/components/DetailsCard";
 import { blogSchema, blogType } from "@/src/zod/blogSchema";
 import { useEffect, useState } from "react";
 
 interface postClientProps {
-    data: any;
+    data: blogType;
 }
 
 export default function PostClient({ data }: postClientProps) {
@@ -44,7 +44,7 @@ export default function PostClient({ data }: postClientProps) {
                             <p>Dati non trovati {error}</p>
                         ) : (
                             postBlog !== null ? (
-                                <Cards dataBlog={postBlog} id={String(postBlog.id)} isDetails={false} />
+                                <DetailCard dataBlog={postBlog} />
                             ) : (<p>I dati non ci sono</p>)
                         )
                     )

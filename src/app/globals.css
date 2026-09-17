@@ -15,12 +15,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(122, 122, 122, 0.15);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(74, 74, 74, 0.5);
 }
 
 @theme inline {
@@ -28,7 +28,10 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --border-card: rgba(255, 255, 255, 0.25);
+  --border-card-light: rgba(255, 255, 255, 0.25);
+  --border-card-dark: rgba(83, 83, 83, 0.25);
+  --shadow-l-cards: 0.5rem -0.3rem 1rem rgba(83, 83, 83, 0.35);
+  --shadow-d-cards: 0.5rem -0.3rem 1rem rgba(255, 255, 255, 0.4);
 
   /* Cards */
   --height-cards: 400px;
@@ -43,8 +46,16 @@
   --gap-sub: 5px;
   --border-sub-purple: rgb(114, 0, 172);
 
+  /*Post Card */
+  --height-post-cards: 40rem;
+  --width-post-cards: 55rem;
+  --border-post-cards-purple: rgb(114, 0, 172);
+  --flex-r-post-cards: row;
+  --padding-post-cards: 10px;
+
   /* Links & Buttons */
   --height-btn: 50px;
+  --height-btn-sm: 36px;
   --width-btn-sm: 96px;
   --width-btn-lg: 126px;
   --width-btn-xl: 180px;
@@ -59,7 +70,7 @@
     white 90%
   );
 
-  --_force-rebuild: 3;
+  --_force-rebuild: 5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -75,31 +86,100 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@utility cards {
-  @apply relative flex flex-row border border-(--border-cards-purple) h-cards w-cards rounded-2xl p-(--padding-cards) items-center justify-center;
+@utility cardsL {
+  @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-white h-cards w-cards rounded-2xl 
+  p-(--padding-cards) items-center justify-center
+  shadow-(--shadow-l-cards) hover:scale-105;
+}
+@utility cardsD {
+  @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-black h-cards w-cards rounded-2xl 
+  p-(--padding-cards) items-center justify-center
+  shadow-(--shadow-d-cards) hover:scale-105;
 }
 
 @utility subCard {
-  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl p-2;
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl;
 }
 
-@utility titleCard {
-  @apply relative flex flex-row items-center justify-center text-base
-  border border-(--border-card) rounded-2xl h-1/4 w-full;
+@utility titleCardL {
+  @apply relative flex flex-row items-center justify-center text-base text-black
+  border border-(--border-card-dark) rounded-2xl h-1/4 w-full p-1;
+}
+@utility titleCardD {
+  @apply relative flex flex-row items-center justify-center text-base text-white
+  border border-(--border-card-light) rounded-2xl h-1/4 w-full p-1;
 }
 
-@utility bodyCard {
+@utility bodyCardL {
   @apply relative flex flex-wrap flex-row justify-center items-center
-  h-2/4 w-full border border-(--border-card) rounded-2xl p-2 ;
+  h-2/4 w-full border border-(--border-card-dark) rounded-2xl p-2 ;
+}
+@utility bodyCardD {
+  @apply relative flex flex-wrap flex-row justify-center items-center
+  h-2/4 w-full border border-(--border-card-light) rounded-2xl p-2 ;
 }
 
 @utility subBodyCard {
   @apply relative flex flex-wrap h-38 w-full text-center text-base overflow-y-auto overflow-x-hidden;
 }
 
-@utility footerCard {
+@utility footerCardL {
   @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
-  border border-(--border-card) rounded-2xl p-2 text-center text-base;
+  border border-(--border-card-dark) rounded-2xl p-2 text-center text-base;
+}
+@utility footerCardD {
+  @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
+  border border-(--border-card-light) rounded-2xl p-2 text-center text-base;
+}
+
+@utility postCardsL {
+  @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-white h-post-cards w-post-cards rounded-2xl 
+  p-(--padding-cards) items-center justify-center
+  shadow-(--shadow-l-cards) hover:scale-105;
+}
+@utility postCardsD {
+  @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-black h-post-cards w-post-cards rounded-2xl 
+  p-(--padding-cards) items-center justify-center
+  shadow-(--shadow-d-cards) hover:scale-105;
+}
+
+@utility postSubCard {
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl p-2;
+}
+
+@utility postTitleCardL {
+  @apply relative flex flex-row items-center justify-center text-base text-black
+  border border-(--border-card-dark) rounded-2xl h-1/4 w-full;
+}
+@utility postTitleCardD {
+  @apply relative flex flex-row items-center justify-center text-base text-white
+  border border-(--border-card-light) rounded-2xl h-1/4 w-full;
+}
+
+@utility postBodyCardL {
+  @apply relative flex flex-wrap flex-row justify-center items-center
+  h-2/4 w-full border border-(--border-card-dark) rounded-2xl p-2 ;
+}
+@utility postBodyCardD {
+  @apply relative flex flex-wrap flex-row justify-center items-center
+  h-2/4 w-full border border-(--border-card-light) rounded-2xl p-2 ;
+}
+
+@utility postSubBodyCard {
+  @apply relative flex flex-wrap h-38 w-full text-center text-base overflow-y-auto overflow-x-hidden;
+}
+
+@utility postFooterCardL {
+  @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
+  border border-(--border-card-dark) rounded-2xl p-2 text-center text-base;
+}
+@utility postFooterCardD {
+  @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
+  border border-(--border-card-light) rounded-2xl p-2 text-center text-base;
 }
 
 @utility buttonCard {
@@ -110,4 +190,8 @@ body {
 
 @utility detailsCard {
   @apply relative flex flex-row flex-1 h-full w-full items-center justify-center p-2;
+}
+
+@utility buttons {
+  @apply h-btn-sm w-btn-lg cursor-pointer rounded-2xl bg-(--bg-btn) hover:bg-(--bg-btn-hover) hover:scale-105;
 }
