@@ -33,7 +33,7 @@ export default function Cards({ dataBlog, id, isDetails, setLoadingLink }: Cards
 
     return (
         <div className={bg === 'dark' ? "cardsD" : "cardsL"}>
-            <div className="subCard">
+            <div className={bg === 'dark' ? "subCardD" : "subCardL"}>
                 <div className={bg === 'dark' ? "titleCardD" : "titleCardL"}>
                     <h4 className="text-center text-base font-serif font-black">{uppercaseWord}</h4>
                 </div>

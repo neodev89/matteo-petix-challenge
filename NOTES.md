@@ -33,3 +33,6 @@ Fine mattinata ore 11:30
 17/09
 • Inizio mattutino: ore 07:00 e fine ore 12:30
 • Inizio pomeridiano ore 17:00 e fine ore 20:30
+
+18/09
+• Inizio mattutino: ore 07:00 e fine ore

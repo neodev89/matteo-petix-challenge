@@ -15,13 +15,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(122, 122, 122, 0.15);
+  background: rgba(102, 101, 101, 0.673);
   border-radius: 9999px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(74, 74, 74, 0.5);
-}
+/* ::-webkit-scrollbar-thumb:hover {
+  background: rgba(2, 2, 2, 0.8);
+} */
 
 @theme inline {
   --color-background: var(--background);
@@ -30,8 +30,8 @@
   --font-mono: var(--font-geist-mono);
   --border-card-light: rgba(255, 255, 255, 0.25);
   --border-card-dark: rgba(83, 83, 83, 0.25);
-  --shadow-l-cards: 0.5rem -0.3rem 1rem rgba(83, 83, 83, 0.35);
-  --shadow-d-cards: 0.5rem -0.3rem 1rem rgba(255, 255, 255, 0.4);
+  --shadow-l-cards: 0 -0.1rem 0.5rem rgba(50, 50, 50, 0.7);
+  --shadow-d-cards: 0 -0.1rem 0.5rem rgba(255, 255, 255, 0.4);
 
   /* Cards */
   --height-cards: 400px;
@@ -70,7 +70,7 @@
     white 90%
   );
 
-  --_force-rebuild: 5;
+  --_force-rebuild: 6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -88,19 +88,23 @@ body {
 
 @utility cardsL {
   @apply relative flex flex-row border 
-  border-(--border-cards-purple) bg-white h-cards w-cards rounded-2xl 
+  border-(--border-cards-purple) bg-gray-400/40 h-cards w-cards rounded-2xl 
   p-(--padding-cards) items-center justify-center
   shadow-(--shadow-l-cards) hover:scale-105;
 }
 @utility cardsD {
   @apply relative flex flex-row border 
-  border-(--border-cards-purple) bg-black h-cards w-cards rounded-2xl 
+  border-(--border-cards-purple) bg-gray-400 h-cards w-cards rounded-2xl 
   p-(--padding-cards) items-center justify-center
   shadow-(--shadow-d-cards) hover:scale-105;
 }
 
-@utility subCard {
-  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl;
+@utility subCardL {
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl bg-white;
+}
+
+@utility subCardD {
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl bg-black;
 }
 
 @utility titleCardL {
