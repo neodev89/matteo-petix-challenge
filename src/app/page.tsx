@@ -1,5 +1,5 @@
-import HomeClient from "./home";
 import { Metadata } from "next";
+import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
   title: "Blog site to read latin documents",
@@ -36,12 +36,24 @@ export default async function Home() {
     },
     "description": "Blog site to consulting latin documents",
   };
+
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    next: {
+      revalidate: 3600,
+    }
+  });
+  if (!res.ok) return <p>Dati non trovati</p>
+  const result = await res.json();
   return (
     <section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify(schema)
       }} />
-      <HomeClient />
+      <HomeClient dataBlog={result} />
+      {/* <p>SSR Test</p> */}
     </section>
   );
 }

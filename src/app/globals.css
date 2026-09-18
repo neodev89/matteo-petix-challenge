@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
@@ -47,8 +48,8 @@
   --border-sub-purple: rgb(114, 0, 172);
 
   /*Post Card */
-  --height-post-cards: 40rem;
-  --width-post-cards: 55rem;
+  --height-post-cards: 30rem;
+  --width-post-cards: 40rem;
   --border-post-cards-purple: rgb(114, 0, 172);
   --flex-r-post-cards: row;
   --padding-post-cards: 10px;
@@ -70,7 +71,7 @@
     white 90%
   );
 
-  --_force-rebuild: 6;
+  --_force-rebuild: 8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +87,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@utility cards {
+  @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 h-cards w-cards rounded-2xl 
+  p-(--padding-cards) items-center justify-center
+  shadow-(--shadow-l-cards) hover:scale-105;
+}
 @utility cardsL {
   @apply relative flex flex-row border 
   border-(--border-cards-purple) bg-gray-400/40 h-cards w-cards rounded-2xl 
@@ -99,6 +106,9 @@ body {
   shadow-(--shadow-d-cards) hover:scale-105;
 }
 
+@utility subCard {
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl bg-white dark:bg-black;
+}
 @utility subCardL {
   @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl bg-white;
 }
@@ -107,6 +117,10 @@ body {
   @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl bg-black;
 }
 
+@utility titleCard {
+  @apply relative flex flex-row items-center justify-center text-base text-black
+  border border-(--border-card-dark) dark:border-(--border-card-light) rounded-2xl h-1/4 w-full p-1;
+}
 @utility titleCardL {
   @apply relative flex flex-row items-center justify-center text-base text-black
   border border-(--border-card-dark) rounded-2xl h-1/4 w-full p-1;
@@ -116,6 +130,10 @@ body {
   border border-(--border-card-light) rounded-2xl h-1/4 w-full p-1;
 }
 
+@utility bodyCard {
+  @apply relative flex flex-wrap flex-row justify-center items-center
+  h-2/4 w-full border border-(--border-card-dark) dark:border-(--border-card-light) rounded-2xl p-2 ;
+}
 @utility bodyCardL {
   @apply relative flex flex-wrap flex-row justify-center items-center
   h-2/4 w-full border border-(--border-card-dark) rounded-2xl p-2 ;
@@ -129,6 +147,14 @@ body {
   @apply relative flex flex-wrap h-38 w-full text-center text-base overflow-y-auto overflow-x-hidden;
 }
 
+@utility paragraphCard {
+  @apply text-center text-black dark:text-white text-base font-serif;
+}
+
+@utility footerCard {
+  @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
+  border border-(--border-card-dark) dark:border-(--border-card-light) rounded-2xl p-2 text-center text-base;
+}
 @utility footerCardL {
   @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
   border border-(--border-card-dark) rounded-2xl p-2 text-center text-base;
@@ -138,23 +164,39 @@ body {
   border border-(--border-card-light) rounded-2xl p-2 text-center text-base;
 }
 
+@utility postCards {
+  @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 h-post-cards w-post-cards rounded-2xl 
+  p-(--padding-cards) items-center justify-center
+  shadow-(--shadow-l-cards) hover:scale-105;
+}
 @utility postCardsL {
   @apply relative flex flex-row border 
-  border-(--border-cards-purple) bg-white h-post-cards w-post-cards rounded-2xl 
+  border-(--border-cards-purple) bg-gray-400/40 h-post-cards w-post-cards rounded-2xl 
   p-(--padding-cards) items-center justify-center
   shadow-(--shadow-l-cards) hover:scale-105;
 }
 @utility postCardsD {
   @apply relative flex flex-row border 
-  border-(--border-cards-purple) bg-black h-post-cards w-post-cards rounded-2xl 
+  border-(--border-cards-purple)  h-post-cards w-post-cards rounded-2xl 
   p-(--padding-cards) items-center justify-center
   shadow-(--shadow-d-cards) hover:scale-105;
 }
 
 @utility postSubCard {
-  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl p-2;
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl p-2 bg-white dark:bg-black;
+}
+@utility postSubCardL {
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl p-2 bg-white;
+}
+@utility postSubCardD {
+  @apply relative flex flex-col h-sub w-sub gap-sub rounded-2xl p-2 bg-black;
 }
 
+@utility postTitleCard {
+  @apply relative flex flex-row items-center justify-center text-base text-black dark:text-white
+  border border-(--border-card-dark) rounded-2xl h-1/4 w-full;
+}
 @utility postTitleCardL {
   @apply relative flex flex-row items-center justify-center text-base text-black
   border border-(--border-card-dark) rounded-2xl h-1/4 w-full;
@@ -164,6 +206,10 @@ body {
   border border-(--border-card-light) rounded-2xl h-1/4 w-full;
 }
 
+@utility postBodyCard {
+  @apply relative flex flex-wrap flex-row justify-center items-center
+  h-2/4 w-full border border-(--border-card-dark) dark:border-(--border-card-light) rounded-2xl p-2 ;
+}
 @utility postBodyCardL {
   @apply relative flex flex-wrap flex-row justify-center items-center
   h-2/4 w-full border border-(--border-card-dark) rounded-2xl p-2 ;
@@ -177,6 +223,10 @@ body {
   @apply relative flex flex-wrap h-38 w-full text-center text-base overflow-y-auto overflow-x-hidden;
 }
 
+@utility postFooterCard {
+  @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
+  border border-(--border-card-dark) dark:border-(--border-card-light) rounded-2xl p-2 text-center text-base;
+}
 @utility postFooterCardL {
   @apply relative flex flex-wrap justify-between items-center h-1/4 w-full overflow-y-auto overflow-x-hidden
   border border-(--border-card-dark) rounded-2xl p-2 text-center text-base;
@@ -193,7 +243,11 @@ body {
 }
 
 @utility detailsCard {
-  @apply relative flex flex-row flex-1 h-full w-full items-center justify-center p-2;
+  @apply relative flex flex-col flex-1 h-dvh w-full items-center justify-center p-2 
+  bg-repeat bg-cover bg-center 
+  bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06R0MuBxCafDIfD3FfgEE6h8lI2DoVhL19zw8s9DNLw&s=10')] 
+  dark:bg-no-repeat dark:bg-cover dark:bg-center 
+  dark:bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20240104/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png')];
 }
 
 @utility buttons {

@@ -1,42 +1,28 @@
-'use server'
-
-import { blogSchema, blogType } from "@/src/zod/blogSchema";
 import PostClient from "./PostClient";
 import { getData } from "@/src/hooks/getData";
+import { Metadata } from "next";
 
-export async function generateMetadata(
-    { params }: { params: Promise<{ id: string }> }
-) {
-    const { id } = await params;
-
-    const result = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        headers: {
-            "Content-Type": "application/json",
-        },
-        cache: "no-store"
-    });
-    if (!result.ok) return;
-
-    const data = await result.json();
-    const parsed = blogSchema.safeParse(result);
-
-    if (!parsed.success) {
-        return {
-            title: "Articolo non trovato",
-            description: "Il contenuto richiesto non esiste."
-        };
+export const metadata: Metadata = {
+    title: "Blog article selected by id",
+    description: "Blog article selected by ID allow you to study a single post",
+    openGraph: {
+        url: "http://localhost:3000/:id/blog",
+        type: "website",
+        images: [
+            {
+                url: "/og1.png",
+                width: 1200,
+                height: 630,
+                alt: "Immagine del Blog"
+            }
+        ]
+    },
+    twitter: {
+        card: "summary_large_image",
+        site: "Blog site to consulting latin documents",
+        creator: "@creator",
+        images: "/og1.png"
     }
-    const blog = parsed.data;
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: blog.title,
-        description: blog.body,
-        author: {
-            '@type': 'Person',
-        }
-    };
-    return jsonLd;
 }
 
 export default async function Post({ params }: { params: Promise<{ id: string }> }) {
