@@ -32,7 +32,9 @@ export default function HomeClient() {
                 alt={"sfondo viole per il blog"}
                 fill
                 preload
+                loading={"eager"}
                 unoptimized
+                quality={80}
                 style={{
                     objectFit: 'cover',
                     objectPosition: 'center',
