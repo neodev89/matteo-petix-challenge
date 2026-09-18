@@ -33,6 +33,10 @@ export default function HomeClient() {
                 fill
                 preload
                 unoptimized
+                style={{
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                }}
             />
             {loadingLink ? (
                 <>
@@ -48,7 +52,7 @@ export default function HomeClient() {
                             </h1>
                         </div>
                         <div className="relative flex flex-row h-1/3 w-full justify-center items-center">
-                            <h3 className={bg === 'dark' ? "text-white text-lg" : "text-black"}>Il tuo Blog dove puoi visualizzare tutti gli articoli che sono stati pubblicati</h3>
+                            <h2 className={bg === 'dark' ? "text-white text-lg" : "text-black"}>Il tuo Blog dove puoi visualizzare tutti gli articoli che sono stati pubblicati</h2>
                         </div>
                         <div className="relative flex flex-row h-1/3 w-full justify-center items-center">
                             <IconButton 
@@ -59,7 +63,7 @@ export default function HomeClient() {
                                 <span className={bg === 'dark' ? 'text-white' : 'text-black'}>Modalità</span> 
                                 {
                                     bg === 'dark' ? (
-                                        <DarkModeIcon sx={{ color: "gray" }} />
+                                        <DarkModeIcon sx={{ color: "white" }} />
                                     ) : (
                                         <LightModeIcon sx={{ color: "black" }} />
                                     )
