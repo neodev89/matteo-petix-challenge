@@ -35,11 +35,17 @@
   --shadow-d-cards: 0 -0.1rem 0.5rem rgba(255, 255, 255, 0.4);
 
   /* Cards */
-  --height-cards: 400px;
+  --height-cards: 450px;
   --width-cards: 300px;
+  --height-cards-md: 25rem;
+  --width-cards-md: 20rem;
+  --height-cards-sm: 40rem;
+  --width-cards-sm: 20rem;
+
   --border-cards-purple: rgb(114, 0, 172);
   --flex-r-cards: row;
   --padding-cards: 10px;
+  --text-title-card: 0.85rem;
 
   /* Sub Cards */
   --height-sub: 100%;
@@ -48,8 +54,13 @@
   --border-sub-purple: rgb(114, 0, 172);
 
   /*Post Card */
-  --height-post-cards: 30rem;
-  --width-post-cards: 40rem;
+  --height-post-cards: 35rem;
+  --width-post-cards: 45rem;
+  --height-post-c-md: 45rem;
+  --width-post-c-md: 37rem;
+  --height-post-c-sm: 33rem;
+  --width-post-c-sm: 22rem;
+
   --border-post-cards-purple: rgb(114, 0, 172);
   --flex-r-post-cards: row;
   --padding-post-cards: 10px;
@@ -70,8 +81,12 @@
     #5016b5 15%,
     white 90%
   );
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-roboto-slab: var(--font-roboto_slab);
+  --font-roboto-cond: var(--font-roboto_cond);
 
-  --_force-rebuild: 8;
+  --_force-rebuild: 2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,11 +102,90 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@utility subHomeClient {
+  @apply relative flex flex-1 flex-col rounded-2xl w-full p-1 gap-y-2;
+}
+
+@utility wrappedSubHomeClient {
+  @apply relative flex flex-col items-center 
+  h-1/5 w-full border-2 border-purple-800/30 
+  dark:border-white/50 rounded-2xl py-2;
+}
+
+@utility wrapperDivHomeClient {
+  @apply relative flex flex-row h-1/3 w-full 
+  justify-center items-center bg-clip-text text-transparent;
+}
+
+@utility h1TitleHomeClient {
+  @media (min-width: 350px) {
+    @apply font-extrabold text-sm text-center text-black dark:text-white;
+  }
+
+  @media (min-width: 768px) {
+    @apply font-extrabold text-2xl text-black dark:text-white;
+  }
+
+  @media (min-width: 1024px) {
+    @apply font-extrabold text-3xl text-black dark:text-white;
+  }
+}
+
+@utility h2SubTitleHomeClient {
+  @media (min-width: 350px) {
+    @apply dark:text-white text-center text-black text-xs;
+  }
+
+  @media (min-width: 768px) {
+    @apply dark:text-white text-center text-black text-lg;
+  }
+}
+
+@utility wrapperCards {
+  @apply relative flex gap-y-4 p-5 h-120 w-full overflow-x-hidden overflow-y-auto;
+
+  @media (min-width: 350px) {
+    @apply flex-col items-center gap-y-4 p-2 h-full 
+    w-full overflow-x-hidden overflow-y-auto;
+  }
+
+  @media (min-width: 1024px) {
+    @apply flex-row flex-wrap justify-between gap-y-4 max-h-max w-full
+    overflow-x-hidden overflow-y-auto;
+  }
+
+  @media (min-width: 1440px) {
+    @apply flex-row flex-wrap justify-between gap-y-2 max-h-max w-full;
+  }
+}
+
 @utility cards {
   @apply relative flex flex-row border 
   border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 h-cards w-cards rounded-2xl 
   p-(--padding-cards) items-center justify-center
   shadow-(--shadow-l-cards) hover:scale-105;
+
+  @media (min-width: 350px) {
+    @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 
+    h-cards-sm w-cards-sm rounded-2xl 
+    p-(--padding-cards) items-center justify-center
+    shadow-(--shadow-l-cards) hover:scale-105;
+  }
+
+  @media (min-width: 1024px) {
+    @apply relative flex flex-row border 
+    border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 h-cards-md w-(--width-cards-md) rounded-2xl 
+    p-(--padding-cards) items-center justify-center
+    shadow-(--shadow-l-cards) hover:scale-105;
+  }
+
+  @media (min-width: 1440px) {
+    @apply relative flex flex-row border 
+    border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 h-cards w-cards rounded-2xl 
+    p-(--padding-cards) items-center justify-center
+    shadow-(--shadow-l-cards) hover:scale-105;
+  }
 }
 @utility cardsL {
   @apply relative flex flex-row border 
@@ -118,7 +212,7 @@ body {
 }
 
 @utility titleCard {
-  @apply relative flex flex-row items-center justify-center text-base text-black
+  @apply relative flex flex-row items-center justify-center
   border border-(--border-card-dark) dark:border-(--border-card-light) rounded-2xl h-1/4 w-full p-1;
 }
 @utility titleCardL {
@@ -147,8 +241,42 @@ body {
   @apply relative flex flex-wrap h-38 w-full text-center text-base overflow-y-auto overflow-x-hidden;
 }
 
+@utility titleHCard {
+  @apply text-center text-base font-bold font-mono 
+  text-black dark:text-white;
+
+  @media (min-width: 350px) {
+    @apply text-sm font-bold font-mono text-black dark:text-white;
+  }
+
+  @media (min-width: 768px) {
+    @apply text-center text-base font-bold
+    font-mono text-black dark:text-white;
+  }
+}
+@utility titleHDetailCard {
+  @apply text-center text-3xl font-bold font-mono text-black dark:text-white;
+}
+
 @utility paragraphCard {
-  @apply text-center text-black dark:text-white text-base font-serif;
+  @apply text-center dark:text-center text-black dark:text-white
+  font-light font-roboto-cond dark:font-light dark:font-roboto-cond;
+  @media (min-width: 350px) {
+    @apply text-sm;
+  }
+  @media (min-width: 768px) {
+    @apply text-sm;
+  }
+  @media (min-width: 1024px) {
+    @apply text-base;
+  }
+  @media (min-width: 1440px) {
+    @apply text-base;
+  }
+}
+@utility paragraphHDetailCard {
+  @apply text-center text-black dark:text-white text-lg 
+  font-roboto-cond;
 }
 
 @utility footerCard {
@@ -164,18 +292,117 @@ body {
   border border-(--border-card-light) rounded-2xl p-2 text-center text-base;
 }
 
+@utility detailsCard {
+  @apply relative flex flex-col flex-1 gap-y-5 h-full w-full items-center justify-evenly p-2 
+  bg-no-repeat bg-cover bg-center 
+  bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06R0MuBxCafDIfD3FfgEE6h8lI2DoVhL19zw8s9DNLw&s=10')] 
+  dark:bg-no-repeat dark:bg-cover dark:bg-center 
+  dark:bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20240104/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png')];
+
+  @media (min-width: 350px) {
+    @apply relative flex flex-col flex-1 gap-y-5 h-full w-full items-center justify-evenly p-2 
+    bg-repeat bg-contain bg-center 
+    bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06R0MuBxCafDIfD3FfgEE6h8lI2DoVhL19zw8s9DNLw&s=10')] 
+    dark:bg-no-repeat dark:bg-cover dark:bg-center 
+    dark:bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20240104/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png')];
+  }
+
+  @media (min-width: 768px) {
+    @apply relative flex flex-col flex-1 gap-y-5 h-full w-full items-center justify-evenly p-2 
+    bg-repeat bg-auto bg-bottom 
+    bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06R0MuBxCafDIfD3FfgEE6h8lI2DoVhL19zw8s9DNLw&s=10')] 
+    dark:bg-no-repeat dark:bg-cover dark:bg-center 
+    dark:bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20240104/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png')];
+  }
+
+  @media (min-width: 1024px) {
+    @apply relative flex flex-col flex-1 gap-y-5 h-full w-full items-center justify-evenly p-2 
+    bg-repeat bg-auto bg-bottom 
+    bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06R0MuBxCafDIfD3FfgEE6h8lI2DoVhL19zw8s9DNLw&s=10')] 
+    dark:bg-no-repeat dark:bg-cover dark:bg-center 
+    dark:bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20240104/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png')];
+  }
+
+  @media (min-width: 1440px) {
+    @apply relative flex flex-col flex-1 gap-y-5 h-full w-full items-center justify-evenly p-2 
+    bg-no-repeat bg-cover bg-center 
+    bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06R0MuBxCafDIfD3FfgEE6h8lI2DoVhL19zw8s9DNLw&s=10')] 
+    dark:bg-no-repeat dark:bg-cover dark:bg-center 
+    dark:bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20240104/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png')];
+  }
+}
+
+@utility wrappedDetailIconBtn {
+  @apply flex flex-row h-1/4 w-full justify-center items-center;
+}
+@utility wrappedDetailCard {
+  @apply flex flex-row h-3/4 w-full justify-center items-center;
+}
+
 @utility postCards {
-  @apply relative flex flex-row border 
-  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 h-post-cards w-post-cards rounded-2xl 
-  p-(--padding-cards) items-center justify-center
-  shadow-(--shadow-l-cards) hover:scale-105;
+  @media (min-width: 350px) {
+    @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 
+    h-post-c-sm w-post-c-sm rounded-2xl 
+    p-(--padding-cards) items-center justify-center
+    shadow-(--shadow-l-cards) hover:scale-105;
+  }
+
+  @media (min-width: 768px) {
+    @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 
+    h-post-c-md w-post-c-md rounded-2xl 
+    p-(--padding-cards) items-center justify-center
+    shadow-(--shadow-l-cards) hover:scale-105;
+  }
+
+  @media (min-width: 1024px) {
+    @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 
+    h-post-c-md w-post-c-md rounded-2xl 
+    p-(--padding-cards) items-center justify-center
+    shadow-(--shadow-l-cards) hover:scale-105;
+  }
+
+  @media (min-width: 1440px) {
+    @apply relative flex flex-row border 
+  border-(--border-cards-purple) bg-gray-400/40 dark:bg-gray-400 
+    h-post-cards w-post-cards rounded-2xl 
+    p-(--padding-cards) items-center justify-center
+    shadow-(--shadow-l-cards) hover:scale-105;
+  }
 }
-@utility postCardsL {
-  @apply relative flex flex-row border 
-  border-(--border-cards-purple) bg-gray-400/40 h-post-cards w-post-cards rounded-2xl 
-  p-(--padding-cards) items-center justify-center
-  shadow-(--shadow-l-cards) hover:scale-105;
+
+@utility postCardsScreen {
+  /* Classi base condivise da tutti i breakpoint */
+  @apply relative flex flex-row border border-(--border-cards-purple) 
+  bg-gray-400/40 dark:bg-gray-400 rounded-2xl 
+    p-(--padding-cards) items-center justify-center 
+    shadow-(--shadow-l-cards) hover:scale-105 transition-transform;
+
+  @media (min-width: 350px) {
+    @apply h-post-c-sm w-post-c-sm;
+  }
+
+  @media (min-width: 768px) {
+    @apply h-post-c-md w-post-c-md;
+  }
+
+  @media (min-width: 1024px) {
+    @apply h-post-c-md w-post-c-md;
+  }
+
+  @media (min-width: 1440px) {
+    @apply h-post-cards w-post-cards;
+  }
+
+  /* --- ADATTAMENTO SCHERMI BASSI (LAPTOP E DESKTOP COMPATTI) --- */
+  /* Se lo schermo è largo ma ha un'altezza ridotta (es. 1024x558px), riduciamo l'altezza ed i margini */
+  @media (min-width: 1024px) and (max-height: 700px) {
+    @apply h-auto max-h-[80%] w-post-c-md p-3;
+  }
 }
+
 @utility postCardsD {
   @apply relative flex flex-row border 
   border-(--border-cards-purple)  h-post-cards w-post-cards rounded-2xl 
@@ -197,6 +424,11 @@ body {
   @apply relative flex flex-row items-center justify-center text-base text-black dark:text-white
   border border-(--border-card-dark) rounded-2xl h-1/4 w-full;
 }
+
+@utility postTitleHCard {
+  @apply text-center text-xl font-bold font-mono text-black dark:text-white;
+}
+
 @utility postTitleCardL {
   @apply relative flex flex-row items-center justify-center text-base text-black
   border border-(--border-card-dark) rounded-2xl h-1/4 w-full;
@@ -242,11 +474,11 @@ body {
   hover:bg-(--bg-btn-hover) hover:scale-110;
 }
 
-@utility detailsCard {
-  @apply relative flex flex-col flex-1 h-dvh w-full items-center justify-center p-2 
-  bg-repeat bg-cover bg-center 
+@utility homeClient {
+  @apply relative flex flex-1 h-dvh w-full p-3 
+  bg-white bg-no-repeat bg-cover bg-center 
   bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06R0MuBxCafDIfD3FfgEE6h8lI2DoVhL19zw8s9DNLw&s=10')] 
-  dark:bg-no-repeat dark:bg-cover dark:bg-center 
+  dark:bg-black dark:bg-no-repeat dark:bg-cover dark:bg-center 
   dark:bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20240104/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png')];
 }
 

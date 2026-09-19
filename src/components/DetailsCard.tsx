@@ -68,22 +68,22 @@ export default function DetailCard({
                     error ? (
                         <p className="paragraphCard">Errore nel caricamento</p>
                     ) : (
-                        <div className="postCards">
+                        <div className="postCardsScreen">
                             <div className="postSubCard">
                                 <div className="postTitleCard">
-                                    <h1 className="text-center text-3xl font-serif">
+                                    <h1 className="postTitleHCard">
                                         {uppercaseWord}
                                     </h1>
                                 </div>
                                 <div className="postBodyCard">
                                     <div className="postSubBodyCard">
-                                        <p className="text-center text-black dark:text-white font-serif text-lg">
+                                        <p className="paragraphHDetailCard">
                                             {uppercaseBody}
                                         </p>
                                     </div>
                                 </div>
                                 <div className="footerCard">
-                                    <Link href={"/"} className="buttonCard">
+                                    <Link href={"/"} prefetch={false} className="buttonCard">
                                         Indietro
                                     </Link>
                                 </div>

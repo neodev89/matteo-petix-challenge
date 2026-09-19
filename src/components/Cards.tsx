@@ -58,7 +58,9 @@ export default function Cards({ dataBlog, isDetails }: CardsProps) {
         <div className={"cards"}>
             <div className={"subCard"}>
                 <div className={"titleCard"}>
-                    <h4 className="text-center text-base font-bold font-serif text-black dark:text-white">{uppercaseWord}</h4>
+                    <h4 className="titleHCard">
+                        {uppercaseWord}
+                    </h4>
                 </div>
                 <div className={"bodyCard"}>
                     <div className="subBodyCard">
@@ -68,7 +70,7 @@ export default function Cards({ dataBlog, isDetails }: CardsProps) {
                     </div>
                 </div>
                 <div className={"footerCard"}>
-                    <Link href={isDetails ? `/${blogData?.id}/blog` : "/"} className="buttonCard">
+                    <Link href={isDetails ? `/${blogData?.id}/blog` : "/"} prefetch={false} className="buttonCard">
                         {isDetails ? "Dettaglio" : "Indietro"}
                     </Link>
                 </div>

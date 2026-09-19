@@ -11,14 +11,16 @@ interface postClientProps {
 export default function PostClient({ data }: postClientProps) {
     return (
         <div className="detailsCard">
+            <div className="wrappedDetailIconBtn">
             <IconToggle />
-            <>
+            </div>
+            <div className="wrappedDetailCard">
                 {
-                    data !== null ? (
-                        <DetailCard dataBlog={data} />
-                    ) : (<p>I dati non ci sono</p>)
-                }
-            </>
+                data !== null ? (
+                    <DetailCard dataBlog={data} />
+                ) : (<p>I dati non ci sono</p>)
+            }
+            </div>
         </div>
     )
 }

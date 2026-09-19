@@ -53,7 +53,6 @@ export default async function Home() {
         __html: JSON.stringify(schema)
       }} />
       <HomeClient dataBlog={result} />
-      {/* <p>SSR Test</p> */}
     </section>
   );
 }
