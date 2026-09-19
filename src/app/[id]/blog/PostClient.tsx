@@ -1,6 +1,7 @@
 'use client'
 
 import DetailCard from "@/src/components/DetailsCard";
+import DynamicBackground from "@/src/components/DynamicBackground";
 import IconToggle from "@/src/components/iconToggle";
 import { blogType } from "@/src/zod/blogSchema";
 import { useEffect, useState } from "react";
@@ -39,16 +40,18 @@ export default function PostClient({ data }: postClientProps) {
 
     return (
         <div className="detailsCard">
+            <DynamicBackground />
             <div className="wrappedDetailIconBtn">
                 <IconToggle />
             </div>
             <div className="wrappedDetailCard">
-                <p className="text-red-700">{mode ? "È Dark" : "È Light"}</p>
-                {
-                    data !== null ? (
-                        <DetailCard dataBlog={data} />
-                    ) : (<p>I dati non ci sono</p>)
-                }
+                <>
+                    {
+                        data !== null ? (
+                            <DetailCard dataBlog={data} />
+                        ) : (<p>I dati non ci sono</p>)
+                    }
+                </>
             </div>
         </div>
     )

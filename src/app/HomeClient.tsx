@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Cards from "../components/Cards";
 import IconToggle from "../components/iconToggle";
+import DynamicBackground from "../components/DynamicBackground";
 
 interface dataHomeCardProps {
     dataBlog: any;
@@ -11,7 +12,7 @@ interface dataHomeCardProps {
 export default function HomeClient({ dataBlog }: dataHomeCardProps) {
     return (
         <div className="homeClient">
-
+            <DynamicBackground />
             <div className="subHomeClient">
                 <div className="wrappedSubHomeClient">
                     <div className="wrapperDivHomeClient">
@@ -26,7 +27,7 @@ export default function HomeClient({ dataBlog }: dataHomeCardProps) {
                         <IconToggle />
                     </div>
                 </div>
-                <div className="relative flex flex-row p-2 justify-center items-center h-4/5 w-full border-2 border-purple-800/30 dark:border-white/50 rounded-2xl">
+                <div className="relative flex flex-row justify-center items-center h-4/5 w-full">
                     <div className="wrapperCards">
                         {
                             Array.isArray(dataBlog) ? (
