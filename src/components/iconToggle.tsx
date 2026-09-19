@@ -43,6 +43,9 @@ export default function IconToggle() {
 
         // 3. Aggiorna lo stato locale unicamente per scambiare l'icona
         setIsDark(darkNow);
+
+        // Notifica il cambio di tema a tutta l'applicazione
+        window.dispatchEvent(new Event('themeChange'));
     };
 
     return (
