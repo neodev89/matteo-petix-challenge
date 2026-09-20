@@ -41,7 +41,7 @@ Fine mattinata ore 11:30
 • Inizio e fine: ore 10:30-13:30 e ore 16:00-20:00
 
 20/09
-• Inizio e fine: ore 09:30-13:00 e ore 14:30-17:00 con termine attività
+• Inizio e fine: ore 09:30-13:00 e ore 14:30-17:30 con termine attività
 
 ## Ragionamento, logica e struttura
 
@@ -49,9 +49,9 @@ In questo capitolo del file tenterò di esporre i processi mentali e logici che 
 alla restituzione dell'App così come la si vede.
 
 • Ragionamento:
-    - L'idea era rispettare le specifiche dettate nella guida, esponendo nell'html
+    - L'obiettivo è rispettare le specifiche dettate nella guida, esponendo nell'html
         i dati ottenuti dalla API sfruttando la potenza dei Server Components.
-    - L'App doveva essere prestante, riducendo latenze di caricamento, con particolare attenzione
+    - L'App deve essere prestante, riducendo latenze di caricamento, con particolare attenzione
         alla pratica comune di gestire errori e loading interni. Ogni qualvolta fosse necessario
         effettuare un refetch o una nuova chiamata API.
     - Avere un'App esteticamente gradevole, usando la combo Next.js e Tailwind, assieme a Material UI per la gestione di
