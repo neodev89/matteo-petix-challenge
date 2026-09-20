@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto_Condensed, Roboto_Slab } from "next/font/google";
-import { WrapperQueryClientProvider } from "../tanstack/queryProvider";
 import { ContextBgProvider } from "../context/bgContext";
 
 const robotoSlab = Roboto_Slab({
@@ -30,13 +29,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${robotoCondense.variable} ${robotoSlab.variable} h-full antialiased`}
     >
-      <WrapperQueryClientProvider>
-        <ContextBgProvider>
-          <body className="min-h-full flex flex-col">
-            {children}
-          </body>
-        </ContextBgProvider>
-      </WrapperQueryClientProvider>
+      <ContextBgProvider>
+        <body className="min-h-full flex flex-col">
+          {children}
+        </body>
+      </ContextBgProvider>
     </html>
   );
 }
