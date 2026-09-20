@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HomeClient from "./HomeClient";
+import ErrorHome from "./ErrorHome";
 
 export const metadata: Metadata = {
   title: "Blog site to read latin documents",
@@ -45,7 +46,7 @@ export default async function Home() {
       revalidate: 3600,
     }
   });
-  if (!res.ok) return <p>Dati non trovati</p>
+  if (!res.ok) return <ErrorHome />
   const result = await res.json();
   return (
     <section>

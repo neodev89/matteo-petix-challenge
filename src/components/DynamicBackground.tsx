@@ -42,6 +42,8 @@ export default function DynamicBackground() {
       fill
       priority // Ottimizza l'LCP per Lighthouse
       loading={'eager'}
+      sizes='(max-width: 768px) 100vw, (max-width: 1024px) 100%, 100%'
+      quality={80}
       style={{
         objectFit: 'cover',
         objectPosition: 'center',       

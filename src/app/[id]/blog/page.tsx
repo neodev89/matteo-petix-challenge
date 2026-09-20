@@ -1,6 +1,7 @@
 import PostClient from "./PostClient";
 import { getData } from "@/src/hooks/getData";
 import { Metadata } from "next";
+import ErrorPost from "./ErrorPost";
 
 export const metadata: Metadata = {
     title: "Blog article selected by id",
@@ -30,7 +31,7 @@ export default async function Post({ params }: { params: Promise<{ id: string }>
     let jsonLd = {};
     const data = await getData({ params: { id } });
     if (typeof data === "string") return <p>Errore alla chiamata</p>
-    if (!data) return <p>nessun dato disponibile</p>
+    if (!data) return <ErrorPost />
 
     jsonLd = {
         '@context': 'https://schema.org',

@@ -1,29 +1,21 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto_Condensed, Roboto_Slab } from "next/font/google";
+import { Roboto_Condensed, Roboto_Slab } from "next/font/google";
 import { WrapperQueryClientProvider } from "../tanstack/queryProvider";
 import { ContextBgProvider } from "../context/bgContext";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const robotoSlab = Roboto_Slab({
   variable: "--font-roboto_slab",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
+  display: 'swap'
 });
 
 const robotoCondense = Roboto_Condensed({
   variable: "--font-roboto_cond",
   subsets: ["latin"],
   weight: ["500"],
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -36,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       suppressHydrationWarning
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${robotoCondense.variable} ${robotoSlab.variable} h-full antialiased`}
+      className={`${robotoCondense.variable} ${robotoSlab.variable} h-full antialiased`}
     >
       <WrapperQueryClientProvider>
         <ContextBgProvider>

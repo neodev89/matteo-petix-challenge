@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { blogSchema, blogType } from "../zod/blogSchema"
 import { useEffect, useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export interface CardsProps {
     dataBlog: any;
@@ -16,8 +17,6 @@ export default function Cards({ dataBlog, isDetails }: CardsProps) {
     const [error, setError] = useState<string>("");
     const [uppercaseWord, setUppercaseWord] = useState<string>("");
     const [uppercaseBody, setUppercaseBody] = useState<string>("");
-
-    console.log(dataBlog);
 
     useEffect(() => {
         async function parsedData() {
@@ -50,23 +49,21 @@ export default function Cards({ dataBlog, isDetails }: CardsProps) {
         parsedData();
     }, []);
 
-    useEffect(() => {
-        console.log(blogData);
-    }, [blogData]);
-
     return (
         <div className={"cards"}>
-            <div className={"subCard"}>
+            {error ? (<p className="paragraphCard">Errore nel caricamento!</p>) : (<div className={"subCard"}>
                 <div className={"titleCard"}>
-                    <h4 className="titleHCard">
+                    { loading ? (<CircularProgress />) : (<h2 className="titleHCard">
                         {uppercaseWord}
-                    </h4>
+                    </h2>)}
                 </div>
                 <div className={"bodyCard"}>
                     <div className="subBodyCard">
-                        <p className={"paragraphCard"}>
+                        { loading ? (<CircularProgress />) : (
+                            <p className={"paragraphCard"}>
                             {uppercaseBody}
                         </p>
+                        )}
                     </div>
                 </div>
                 <div className={"footerCard"}>
@@ -74,7 +71,7 @@ export default function Cards({ dataBlog, isDetails }: CardsProps) {
                         {isDetails ? "Dettaglio" : "Indietro"}
                     </Link>
                 </div>
-            </div>
+            </div>)}
         </div>
     )
 }
