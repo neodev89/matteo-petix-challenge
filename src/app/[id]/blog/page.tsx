@@ -1,7 +1,7 @@
 import PostClient from "./PostClient";
+import ErrorPost from "./ErrorPost";
 import { getData } from "@/src/hooks/getData";
 import { Metadata } from "next";
-import ErrorPost from "./ErrorPost";
 
 export const metadata: Metadata = {
     title: "Blog article selected by id",

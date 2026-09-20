@@ -1,11 +1,10 @@
 'use client'
 
 import Link from "next/link";
-import { useBg } from "../hooks/useCtx";
-import { CardsProps } from "./Cards";
+
 import { blogSchema, blogType } from "../zod/blogSchema";
 import { useEffect, useState } from "react";
-import IconToggle from "./iconToggle";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface detailCardProps {
     dataBlog: any;
@@ -26,7 +25,7 @@ export default function DetailCard({
             try {
                 setLoading(true);
                 if (dataBlog) {
-                    const parsed = await blogSchema.parseAsync(dataBlog);
+                    const parsed = blogSchema.parse(dataBlog);
                     if (!parsed) return null;
                     setPostBlog(parsed);
                     const splittedWord = dataBlog.title.split("");
@@ -60,38 +59,32 @@ export default function DetailCard({
     // console.log("UPPERCASE BODY: ", upBody);
 
     return (
-        <>
+        <div className="postCardsScreen">
             {
-                loading ? (
-                    <p className="paragraphCard">Attendere mentre carico i dati...</p>
+                error ? (
+                    <p className="paragraphCard">Errore nel caricamento</p>
                 ) : (
-                    error ? (
-                        <p className="paragraphCard">Errore nel caricamento</p>
-                    ) : (
-                        <div className="postCardsScreen">
-                            <div className="postSubCard">
-                                <div className="postTitleCard">
-                                    <h1 className="postTitleHCard">
-                                        {uppercaseWord}
-                                    </h1>
-                                </div>
-                                <div className="postBodyCard">
-                                    <div className="postSubBodyCard">
-                                        <p className="paragraphHDetailCard">
-                                            {uppercaseBody}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="footerCard">
-                                    <Link href={"/"} prefetch={false} className="buttonCard">
-                                        Indietro
-                                    </Link>
-                                </div>
-                            </div>
+                    <div className="postSubCard">
+                        <div className="postTitleCard">
+                            {loading ? (<CircularProgress />) : (<h1 className="postTitleHCard">
+                                {uppercaseWord}
+                            </h1>)}
                         </div>
-                    )
+                        <div className="postBodyCard">
+                            {loading ? (<CircularProgress />) : (<div className="postSubBodyCard">
+                                <p className="paragraphHDetailCard">
+                                    {uppercaseBody}
+                                </p>
+                            </div>)}
+                        </div>
+                        <div className="footerCard">
+                            <Link href={"/"} prefetch={false} className="buttonCard">
+                                Indietro
+                            </Link>
+                        </div>
+                    </div>
                 )
             }
-        </>
+        </div>
     )
 }

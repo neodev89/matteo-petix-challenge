@@ -1,9 +1,9 @@
 'use client'
 
 import Link from "next/link";
+import CircularProgress from "@mui/material/CircularProgress";
 import { blogSchema, blogType } from "../zod/blogSchema"
 import { useEffect, useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 
 export interface CardsProps {
     dataBlog: any;
@@ -22,7 +22,7 @@ export default function Cards({ dataBlog, isDetails }: CardsProps) {
         async function parsedData() {
             setLoading(true);
             try {
-                const parsed = await blogSchema.parseAsync(dataBlog);
+                const parsed = blogSchema.parse(dataBlog);
                 if (!parsed) return;
                 setBlogData(parsed);
                 const splittedWord = parsed.title.split("");

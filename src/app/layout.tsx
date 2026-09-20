@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto_Condensed, Roboto_Slab } from "next/font/google";
-import { ContextBgProvider } from "../context/bgContext";
 
 const robotoSlab = Roboto_Slab({
   variable: "--font-roboto_slab",
@@ -29,11 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${robotoCondense.variable} ${robotoSlab.variable} h-full antialiased`}
     >
-      <ContextBgProvider>
-        <body className="min-h-full flex flex-col">
-          {children}
-        </body>
-      </ContextBgProvider>
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }

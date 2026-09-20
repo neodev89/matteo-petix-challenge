@@ -46,7 +46,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Next.js: <https://nextjs.org/>;
 Tailwind: <https://tailwindcss.com/>;
-Tanstack Query: <https://tanstack.com/query/latest>;
-React Hook Form: <https://react-hook-form.com/>;
-Zod: <https://zod.dev/>;
 Material UI: <https://mui.com/>;
+Zod: <https://zod.dev/>;
+Sitemap: <https://www.npmjs.com/package/next-sitemap>;

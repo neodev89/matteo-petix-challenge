@@ -10,7 +10,7 @@ export async function getData({ params }: { params: { id: string } }) {
         });
         if (!dto.ok) return;
         const data = await dto.json(); 
-        const parsed = await blogSchema.parseAsync(data);
+        const parsed = blogSchema.parse(data);
         if (!parsed) return;
         return parsed;
     } catch (error: Error | unknown) {

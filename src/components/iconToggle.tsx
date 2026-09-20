@@ -5,27 +5,6 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useEffect, useState } from "react";
 
-// export default function IconToggle() {
-//     const { toggleBg, bg } = useBg()
-//     return (
-//         <IconButton
-//             type="button"
-//             size="medium"
-//             onClick={toggleBg}
-//         >
-//             <span className={bg === 'dark' ? 'text-white' : 'text-black'}>Modalità</span>
-//             {
-//                 bg === 'dark' ? (
-//                     <DarkModeIcon sx={{ color: "white" }} />
-//                 ) : (
-//                     <LightModeIcon sx={{ color: "black" }} />
-//                 )
-//             }
-//         </IconButton>
-//     )
-// }
-
-
 export default function IconToggle() {
     const [isDark, setIsDark] = useState(true);
 

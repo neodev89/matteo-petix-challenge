@@ -52,11 +52,11 @@ alla restituzione dell'App così come la si vede.
     - L'idea era rispettare le specifiche dettate nella guida, esponendo nell'html
         i dati ottenuti dalla API sfruttando la potenza dei Server Components.
     - L'App doveva essere prestante, riducendo latenze di caricamento, con particolare attenzione
-        alla pratica comune di gestire errori e loading interni ogni qualvolta fosse necessario
+        alla pratica comune di gestire errori e loading interni. Ogni qualvolta fosse necessario
         effettuare un refetch o una nuova chiamata API.
     - Avere un'App esteticamente gradevole, usando la combo Next.js e Tailwind, assieme a Material UI per la gestione di
-        quei componenti che danno alle dashboard un effetto più esteticamente ordinato.
-    - Evitare re-rendering continui applicando soluzioni moderne che non influivano sulle prestazioni ma consentivano,
+        quei componenti che danno alle interfacce un effetto più ordinato e intuitivo.
+    - Evitare re-rendering continui e inutili applicando soluzioni moderne che non influivano sulle prestazioni ma consentivano,
         al contempo, performance pratiche e reattive.
     - Costruire un'App fortemente tipizzata sfruttando la forza di Zod, creando schemi efficaci per parsare gli oggetti restituiti dalle
         API e validarli, fornendo in automatico anche type coerenti agli schemi implementati.
@@ -68,4 +68,23 @@ alla restituzione dell'App così come la si vede.
         Component mentre la restituzione dei dati con le logiche di gestione di loading ed error lasciate ai file ("nome-file".tsx
         interno ad ogni route directory) contenente il Client Component.
     - Creazione di "@utility" Tailwind per la costruzione di classi personalizzate e riusabili
-        che non avrebbero, peraltro, generato lunghe righe di codice su ogni tag JSX. 
+        che non avrebbero, peraltro, generato lunghe righe di codice su ogni tag JSX.
+    - Importante e vitale è stato l'uso di Zod per la validazione delle Response API perché con esso si ha la
+        possibilità di validare un oggetto a runtime e, quindi, prevenire errori che avrebbero potuto alterare
+        la forma del componente `Cards` il quale avrebbe potuto non trovare le giuste props.
+
+• Struttura:
+    - La prima parte è stato installare tutte le dipendenze necessarie allo sviluppo dell'App;
+        Quindi, dopo aver creato il progetto Next.js, ho aggiunto Material UI, Zod, next-sitemap ho proceduto
+        con l'implementazione del file che avrebbe gestito sia lo schema che il type di Zod.
+    - Dopodiché è stata la volta della pagina principale che si trova nel percorso `app/` e che è definita
+        come route `/` dell'App e nella quale è stato implementato per primo il componente Client e il componente
+        di gestione errori e solo in un secondo momento sono stati inseriti gli oggetti del Metadata e il JSON+LD.
+    - Stesso procedimento per la route dinamica `app/[id]/blog`.
+    - Nel mentre realizzavo i Client Component ho implementato le `@utility` tailwind che gestissero la UI.
+
+## Cosa avrei potuto fare con maggior tempo
+
+Sicuramente avrei potuto lavorare maggiormente sullo studio sia della UI che della UX creando prototipi su strumenti specifici (io uso
+Figma) e migliorando la disposizione degli elementi, la palette di colori, il responsive design.
+Tutto questo lavoro avrebbe richiesto almeno altri 7 giorni di studio e progettazione ma, essendo una challenge, ritengo di aver ottemperato alle parti più essenziali del test.
