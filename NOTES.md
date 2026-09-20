@@ -68,6 +68,4 @@ alla restituzione dell'App così come la si vede.
         Component mentre la restituzione dei dati con le logiche di gestione di loading ed error lasciate ai file ("nome-file".tsx
         interno ad ogni route directory) contenente il Client Component.
     - Creazione di "@utility" Tailwind per la costruzione di classi personalizzate e riusabili
-        che non avrebbero, peraltro, generato lunghe righe di codice su ogni tag JSX.
-
-
+        che non avrebbero, peraltro, generato lunghe righe di codice su ogni tag JSX. 

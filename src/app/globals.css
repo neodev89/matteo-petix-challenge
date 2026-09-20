@@ -1,10 +1,4 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
 /* Scrollbar sottile e discreta */
 ::-webkit-scrollbar {
@@ -89,18 +83,13 @@
   --_force-rebuild: 2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @utility subHomeClient {
   @apply relative flex flex-1 flex-col rounded-2xl w-full p-1 gap-y-2;
